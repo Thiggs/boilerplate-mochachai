@@ -170,7 +170,7 @@ suite('Functional Tests', function() {
 
   // On Gomix we'll use this setting
   /** ### Copy your project's url here  ### **/
-  Browser.site = 'https://sincere-cone.gomix.me'; 
+  Browser.site = 'https://invincible-galvanized-cucumber.glitch.me'; 
   
   // If you are testing on a local environment replace the line above  with 
   // Browser.localhost('example.com', (process.env.PORT || 3000));
@@ -231,7 +231,7 @@ suite('Functional Tests', function() {
 
       /** Now it's your turn. Please don't use the keyword #example in the title. **/
       
-      test('submit "surname" : "Colombo" - write your e2e test...', function(done) {
+      test('submit "surname" : "Colombo"', function(done) {
 
         // fill the form...
         // then submit it pressing 'submit' button.
@@ -246,7 +246,10 @@ suite('Functional Tests', function() {
           .pressButton('submit', function(){
             
             /** YOUR TESTS HERE, Don't forget to remove assert.fail() **/
-            
+            browser.assert.success();
+            browser.assert.text('span#name', 'Cristoforo');
+            browser.assert.text('span#surname', 'Colombo');
+            browser.assert.element('span#dates', 1);
             // pressButton is Async.  Waits for the ajax call to complete...
 
             // assert that status is OK 200
@@ -257,7 +260,6 @@ suite('Functional Tests', function() {
 
             // assert that the element(s) 'span#dates' exist and their count is 1
             
-            assert.fail();
             
             done();   // It's an async test, so we have to call 'done()''
           });
