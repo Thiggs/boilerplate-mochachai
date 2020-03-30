@@ -122,11 +122,14 @@ suite('Functional Tests', function() {
         .put('/travellers')
         /** send {surname: 'Colombo'} here **/
         // .send({...})
+        .send({surname: "Colombo"})
         .end(function(err, res){
           
           /** your tests here **/
-          assert.fail(); // remove this after adding tests
-          
+          assert.equal(res.status, 200)
+          assert.equal(res.type, 'application/json')
+          assert.equal(res.body.name, 'Cristoforo'); // remove this after adding tests
+          assert.equal(res.body.surname, 'Colombo');
           done(); // Never forget the 'done()' callback...
         });
       });
